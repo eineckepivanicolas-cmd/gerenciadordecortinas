@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalação de cortinas especializados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root{
+  --bg: #0b1020;
+  --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.10);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.75);
+  --primary: #6d28d9;
+  --primary2:#4f46e5;
+  --danger:#ff0000;
+  --border: rgba(255,255,255,.14);
+  --shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+  background: radial-gradient(1200px 600px at 20% -10%, rgba(109,40,217,.55), transparent 55%),
+              radial-gradient(900px 500px at 100% 0%, rgba(79,70,229,.50), transparent 50%),
+              var(--bg);
+  color: var(--text);
+  min-height:100vh;
+}
+
+.header{
+  display:flex;
+  width:100%;
+  background: linear-gradient(90deg, rgba(109,40,217,.95), rgba(79,70,229,.95));
+  color: var(--text);
+  padding: 22px 18px;
+  align-items:flex-start;
+  gap: 16px;
+}
+#ambientes{
+  background-color: #202536;
+}
+select{
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #191a1db6;
+  color: white;
+  
+}
+#titulo h1{
+  font-size: 1.6rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#titulo h2{
+  margin-top: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.85);
+}
+
+#cabeçario{
+  margin-left:auto;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+#grana, #diaAgora{
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+}
+
+#diaAgora{ min-width: auto; 
+width: auto;}
+
+#grana label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight: 700;
+}
+
+#mes{
+  border-radius: 14px;
+  height: 44px;
+  padding: 0 12px;
+  font-size: 1rem;
+  background: rgb(110, 77, 255);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+#dashboard{
+  width: min(1100px, 94vw);
+  margin: 18px auto;
+  padding: 18px;
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+#sejabemvindo{
+  font-size:1.3rem;
+  text-align:center;
+  margin-top: 2px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.field label{
+  color: var(--muted);
+  font-weight: 600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+input{
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0);
+  color: var(--text);
+  padding: 0 12px;
+  outline: none;
+}
+
+input::placeholder{ color: rgba(234,240,255,.45); }
+
+#Salvar{
+  height: 48px;
+  border: 0;
+  border-radius: 12px;
+  cursor:pointer;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, var(--primary), var(--primary2));
+  box-shadow: 0 12px 30px rgba(109,40,217,.35);
+}
+
+#Salvar:hover{ filter: brightness(1.05); }
+
+#resposta{
+  width: min(1100px, 94vw);
+  margin: 10px auto 26px;
+}
+
+#resul{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+
+}
+
+@media (min-width: 900px){
+  #resul{ grid-template-columns: 1fr 1fr; }
+}
+
+.card-instalacao{
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.20);
+  transition: transform .15s ease, background .15s ease;
+}
+
+.card-instalacao:hover{
+  transform: translateY(-3px);
+  background: rgba(255,255,255,.10);
+}
+
+.card-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 12px;
+}
+
+.card-title{
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+.card-title h3{
+  font-size: 1.05rem;
+}
+
+.badge{
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(109,40,217,.25);
+  border: 1px solid rgba(109,40,217,.35);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.muted{
+  margin-top: 8px;
+  color: var(--muted);
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.obs{
+  margin-top: 10px;
+  color: rgba(255,255,255,.92);
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(79,70,229,.15);
+  border: 1px solid rgba(79,70,229,.25);
+}
+
+.card-actions{
+  margin-top: 12px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.btn{
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 0;
+  cursor:pointer;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-weight: 900;
+}
+
+.btn-danger{
+  color:#fff;
+  background: rgba(239,68,68,.95);
+}
+
+.empty{
+  grid-column: 1 / -1;
+  background: rgba(255,255,255,.05);
+  border: 1px dashed rgba(255,255,255,.25);
+  border-radius: 16px;
+  padding: 22px;
+  text-align:center;
+  color: var(--muted);
+}
+
+.empty-icon{
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 10px;
+  border-radius: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* layout para field inline simples (mantém HTML atual funcionando) */
+#dashboard label, #dashboard input, #dashboard select{
+  width: 100%;
+}
+.ambiente-card{
+    margin-top:15px;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#1c1c1c;
+}
+
+.ambiente-card h3{
+    margin-bottom:15px;
+}
+
+.campo{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:12px;
+}
+
+.campo label{
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+.campo input,
+.campo select{
+    padding:10px;
+    border-radius:8px;
+}
+.ambiente-info{
+    border:1px solid #ccc;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.ambiente-info h4{
+    margin-bottom:8px;
+}
+
+  </style>
+  </head>
+<body>
+<header class="header">
+    <div id="titulo">
+        <h1><i class="fa-solid fa-house"></i> Gerenciador de cortinas</h1>
+        <h2>Gerencie suas instalações aqui</h2>
+    </div>
+
+<div id="cabeçario">
+    <div id="grana">
+        <label for="dinheiro" id="LDinheiro"><i class="fa-solid fa-coins"></i> Valor Total</label>
+        <div id="dinheiro"></div>
+    </div>
+    
+    <div id="diaAgora"><i class="fa-solid fa-calendar-days"></i> 28/05/2026<br>Terça-Feira</div>
+    <select id="mes">
+        <option>Mês</option>
+        <option>Janeiro</option>
+        <option>Fevereiro</option>
+        <option>Março</option>
+        <option>Abril</option>
+        <option>Maio</option>
+        <option>Junho</option>
+        <option>Julho</option>
+        <option>Agosto</option>
+        <option>Setembro</option>
+        <option>Outubro</option>
+        <option>Novembro</option>
+        <option>Dezembro</option>
+    </select>
+    </div>
+</header>  
+<section id="dashboard">
+   <h1 id="sejabemvindo"><i class="fa-solid fa-face-smile"></i> Seja bem-vindo</h1>
+
+   <div class="field">
+     <label for="nome"><i class="fa-solid fa-user"></i> Nome:</label>
+     <input type="text" placeholder="Ex: Douglas" id="nome">
+   </div>
+
+   <div class="field">
+     <label for="endereco"><i class="fa-solid fa-location-dot"></i> Endereço:</label>
+     <input type="text" placeholder="Ex: Rua São Paulo n*123" id="endereco">
+   </div>
+
+   <div class="field">
+     <label for="numero"><i class="fa-solid fa-phone"></i> Numero do pedido:</label>
+     <input type="text" placeholder="Ex: 123456.7(123)" id="numero">
+   </div> 
+
+   <div class="field">
+     <label for="valor"><i class="fa-solid fa-sack-dollar"></i> Valor:</label>
+     <input type="number" placeholder="Ex: 1234" id="valor">
+   </div>
+
+   <div class="field">
+     <label for="data"><i class="fa-solid fa-calendar"></i> Data:</label>
+     <input type="date" id="data">
+   </div>
+
+   <div class="field">
+     <label for="obs"><i class="fa-solid fa-note-sticky"></i> Observações:</label>
+     <input type="text" id="obs" placeholder="Detalhes adicionais">
+   </div>
+
+   <div class="field">
+     <label for="ambientes"><i class="fa-solid fa-hashtag"></i> Quantidade de ambientes:</label>
+     <select name="ambientes" id="ambientes">
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+   </select>
+   
+   <div id="listaAmbientes"></div>
+
+
+   <button id="Salvar">Salvar Instalação</button>
+   </div>
+</section>
+
+<section id="resposta">
+    <div id="resul"></div>
+</section>
+    <script>
+      
+let instalacoes = [];
+window.idEditando = null;
+function formatarMoedaBRL(valor) {
+    return Number(valor || 0).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+function salvarLocalStorage() {
+    localStorage.setItem("instalacoes", JSON.stringify(instalacoes));
+}
+
+function lerCampos() {
+    return {
+        nome: document.getElementById("nome").value.trim(),
+        endereco: document.getElementById("endereco").value.trim(),
+        numero: document.getElementById("numero").value.trim(),
+        valor: Number(document.getElementById("valor").value || 0),
+        data: document.getElementById("data").value,
+        observacoes: document.getElementById("obs").value.trim(),
+        ambientes: document.getElementById("ambientes").value
+    };
+}
+
+function limparCampos() {
+    document.getElementById("nome").value = "";
+    document.getElementById("endereco").value = "";
+    document.getElementById("numero").value = "";
+    document.getElementById("valor").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("obs").value = "";
+    document.getElementById("ambientes").value = "1";
+}
+
+function salvar() {
+    const dados = lerCampos();
+
+    if (
+        !dados.nome ||
+        !dados.endereco ||
+        !dados.data
+    ) {
+        alert("Preencha todos os campos obrigatórios.");
+        return;
+    }
+
+    const quantidade =
+        Number(document.getElementById("ambientes").value);
+
+    const ambientesDetalhados = [];
+
+   for (let i = 1; i <= quantidade; i++) {
+
+    const ambiente = {
+        nome: document.getElementById(`nomeAmbiente_${i}`).value,
+        tipo: document.getElementById(`tipoCortina_${i}`).value,
+        automatizada: document.getElementById(`automatizada_${i}`).value,
+        largura: document.getElementById(`largura_${i}`).value,
+        altura: document.getElementById(`altura_${i}`).value,
+        lado: "",
+        cor: "",
+        material: ""
+    };
+
+    if (ambiente.tipo === "Persiana") {
+
+        ambiente.tipo_persiana =
+    document.getElementById(`tipo_persiana_${i}`)?.value || "";
+
+        ambiente.lado_comando =
+            document.getElementById(`lado_comando_${i}`)?.value || "";
+
+        ambiente.bando =
+            document.getElementById(`bandoPersiana_${i}`)?.value || "";
+
+        ambiente.nivelador =
+            document.getElementById(`niveladorPersiana_${i}`)?.value || "";
+
+        }
+    ambientesDetalhados.push(ambiente);
+
+    dados.ambientesDetalhados = ambientesDetalhados;
+
+    dados.id = Date.now();
+    const metodo = window.idEditando ? "PUT" : "POST";
+
+    const url = window.idEditando
+    ? `https://5sndnf47-5000.brs.devtunnels.ms//${window.idEditando}`
+    : "https://5sndnf47-5000.brs.devtunnels.ms/";
+
+   fetch(url, {
+    method: metodo,
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+})
+
+.then(res => res.json())
+.then(() => {
+    window.idEditando = null;
+
+    limparCampos();
+
+    document.getElementById("listaAmbientes").innerHTML = "";
+
+    document.getElementById("ambientes").value = "1";
+
+    gerarAmbientes();
+
+    carregarInstalacoes();
+
+})}};
+function criarCard(inst) {
+
+   const ambientesHTML = inst.ambientesDetalhados
+    ? inst.ambientesDetalhados.map((ambiente, index) => `
+        <div class="ambiente-info">
+            <h4>🏠 Ambiente ${index + 1}</h4>
+
+            <p><strong>Nome:</strong> ${ambiente.nome}</p>
+            <p><strong>Tipo:</strong> ${ambiente.tipo}</p>
+            <p><strong>Automatizada:</strong> ${ambiente.automatizada}</p>
+            <p><strong>Largura:</strong> ${ambiente.largura} m</p>
+            <p><strong>Altura:</strong> ${ambiente.altura} m</p>
+            ${ambiente.tipo === "Persiana" ? `
+            <p><strong>Tipo Persiana:</strong> ${ambiente.tipo_persiana}</p>
+            <p><strong>Lado do Comando:</strong> ${ambiente.lado_comando}</p>
+            <p><strong>Bandô:</strong> ${ambiente.bando}</p>
+            <p><strong>Nivelador:</strong> ${ambiente.nivelador}</p>
+` : ""}
+        </div>
+    `).join("")
+    : "<p>Nenhum detalhe de ambiente cadastrado.</p>";
+
+    return `
+        <article class="card-instalacao">
+
+            <h3>${inst.nome}</h3>
+
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                ${inst.endereco}
+            </p>
+
+            <p>
+                <i class="fa-solid fa-hashtag"></i>
+                Pedido: ${inst.numero}
+            </p>
+
+            <p>
+                <i class="fa-solid fa-calendar-days"></i>
+                ${inst.data}
+            </p>
+
+            <p>
+                <i class="fa-solid fa-house"></i>
+                Ambientes: ${inst.ambientes}
+            </p>
+
+            <p>
+                <i class="fa-solid fa-coins"></i>
+                ${formatarMoedaBRL(inst.valor)}
+            </p>
+
+            ${inst.observacoes ?
+                `<p><strong>Observações:</strong> ${inst.observacoes}</p>`
+                : ""
+            }
+
+            <hr>
+
+            <h3>Detalhes dos Ambientes</h3>
+
+            ${ambientesHTML}
+      
+            <button onclick="editarInstalacao(${inst.id})">
+            Editar
+            </button>
+
+            <button onclick="excluirInstalacao(${inst.id})">
+                Excluir
+            </button>
+
+            <button onclick="copiarMensagem(${inst.id})">
+                Copiar Mensagem
+            </button>
+        </article>
+    `;
+}
+
+function renderizarInstalacoes() {
+    const container = document.getElementById("resul");
+
+    if (instalacoes.length === 0) {
+        container.innerHTML = `
+            <h3>Nenhuma instalação cadastrada</h3>
+        `;
+        return;
+    }
+
+    container.innerHTML = instalacoes
+        .map(criarCard)
+        .join("");
+}
+
+function excluirInstalacao(id) {
+
+    if (!confirm("Deseja excluir esta instalação?")) {
+        return;
+    }
+
+    fetch(
+        `https://5sndnf47-5000.brs.devtunnels.ms/${id}`,
+        {
+            method: "DELETE"
+        }
+    )
+    .then(() => {
+        carregarInstalacoes();
+    });
+
+    instalacoes = instalacoes.filter(
+        item => item.id !== id
+    );
+
+    salvarLocalStorage();
+    carregarInstalacoes();
+    atualizarValorTotal();
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    document
+        .getElementById("Salvar")
+        .addEventListener("click", salvar);
+
+    document
+        .getElementById("ambientes")
+        .addEventListener("change", gerarAmbientes);
+
+    carregarInstalacoes();
+    atualizarValorTotal();
+
+    atualizarDataAtual();
+    selecionarMesAtual();
+
+    gerarAmbientes(); // cria o primeiro ambiente ao abrir a página
+});
+function atualizarDataAtual() {
+    const elemento = document.getElementById("diaAgora");
+
+    const hoje = new Date();
+
+    const diasSemana = [
+        "Domingo",
+        "Segunda-feira",
+        "Terça-feira",
+        "Quarta-feira",
+        "Quinta-feira",
+        "Sexta-feira",
+        "Sábado"
+    ];
+
+    const dia = String(hoje.getDate()).padStart(2, "0");
+    const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+    const ano = hoje.getFullYear();
+
+    elemento.innerHTML = `
+        <i class="fa-solid fa-calendar-days"></i>
+        ${dia}/${mes}/${ano}<br>
+        ${diasSemana[hoje.getDay()]}
+    `;
+}
+
+function selecionarMesAtual() {
+    const selectMes = document.getElementById("mes");
+
+    const meses = [
+        "Janeiro",
+        "Fevereiro",
+        "Março",
+        "Abril",
+        "Maio",
+        "Junho",
+        "Julho",
+        "Agosto",
+        "Setembro",
+        "Outubro",
+        "Novembro",
+        "Dezembro"
+    ];
+
+    selectMes.value = meses[new Date().getMonth()];
+}
+function gerarAmbientes() {
+    const quantidade = Number(document.getElementById("ambientes").value );
+
+    const container = document.getElementById("listaAmbientes");
+
+    container.innerHTML = "";
+
+    for (let i = 1; i <= quantidade; i++) {
+        container.innerHTML += `
+            <section class="ambiente-card">
+
+                <h3>
+                    <i class="fa-solid fa-house"></i>
+                    Ambiente ${i}
+                </h3>
+
+                <div class="campo">
+                    <label>Nome do Ambiente</label>
+                    <input
+                        type="text"
+                        id="nomeAmbiente_${i}"
+                        placeholder="Ex: Sala"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label>Tipo da Cortina</label>
+                    <select id="tipoCortina_${i}" onchange="mostrarOpcoesPersiana(${i})">
+                        <option>Caixa Box</option>
+                        <option>Trilho SUiço</option>
+                        <option>Ilhós</option>
+                        <option>Tubo deslizante</option>
+                        <option>Persiana</option>
+                    </select>
+                    <div id="opcoesPersiana_${i}"></div>
+                </div>
+
+                <div class="campo">
+                    <label>Automatizada?</label>
+                    <select id="automatizada_${i}">
+                        <option>Não</option>
+                        <option>Sim</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Largura (m)</label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        id="largura_${i}"
+                        placeholder="Ex: 3.50"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label>Altura (m)</label>
+                    <input
+                        type="number"
+                        step="0.01"
+                        id="altura_${i}"
+                        placeholder="Ex: 2.80"
+                    >
+                </div>
+
+            </section>
+        `;
+    }
+}
+function atualizarValorTotal() {
+    const total = instalacoes.reduce((soma, instalacao) => {
+        return soma + Number(instalacao.valor || 0);
+    }, 0);
+
+    document.getElementById("dinheiro").textContent =
+        total.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+}
+function mostrarOpcoesPersiana(i) {
+
+    const tipo =
+        document.getElementById(`tipoCortina_${i}`).value;
+
+    const container =
+        document.getElementById(`opcoesPersiana_${i}`);
+
+    if (tipo === "Persiana") {
+
+        container.innerHTML = `
+    <div class="campo">
+        <label>Tipo da Persiana</label>
+
+        <select id="tipo_persiana_${i}">
+            <option>Tela Solar</option>
+            <option>Double Vision</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label>Lado do Comando</label>
+
+        <select id="lado_comando_${i}">
+            <option>Direito</option>
+            <option>Esquerdo</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label>Bandô</label>
+
+        <select id="bandoPersiana_${i}">
+            <option>Com Bandô</option>
+            <option>Sem Bandô</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label>Nivelador</label>
+
+        <select id="niveladorPersiana_${i}">
+            <option>Com Nivelador</option>
+            <option>Sem Nivelador</option>
+        </select>
+    </div>
+`;
+    } else {
+
+        container.innerHTML = "";
+
+    }
+}
+function carregarInstalacoes() {
+
+    fetch("https://5sndnf47-5000.brs.devtunnels.ms/")
+        .then(res => res.json())
+        .then(dados => {
+
+            instalacoes = dados;
+
+            renderizarInstalacoes();
+            atualizarValorTotal();
+
+        });
+
+}
+function editarInstalacao(id) {
+
+    const inst = instalacoes.find(item => item.id === id);
+
+    if (!inst) return;
+
+    document.getElementById("nome").value = inst.nome;
+    document.getElementById("endereco").value = inst.endereco;
+    document.getElementById("numero").value = inst.numero;
+    document.getElementById("valor").value = inst.valor;
+    document.getElementById("data").value = inst.data;
+    document.getElementById("obs").value = inst.observacoes;
+    document.getElementById("ambientes").value = inst.ambientes;
+
+    gerarAmbientes();
+
+    inst.ambientesDetalhados.forEach((ambiente, index) => {
+
+        const i = index + 1;
+
+        document.getElementById(`nomeAmbiente_${i}`).value =
+            ambiente.nome;
+
+        document.getElementById(`tipoCortina_${i}`).value =
+            ambiente.tipo;
+
+        mostrarOpcoesPersiana(i);
+
+        document.getElementById(`automatizada_${i}`).value =
+            ambiente.automatizada;
+
+        document.getElementById(`largura_${i}`).value =
+            ambiente.largura;
+
+        document.getElementById(`altura_${i}`).value =
+            ambiente.altura;
+
+        if (ambiente.tipo === "Persiana") {
+
+           ambiente.tipo_persiana =
+            document.getElementById(`tipo_persiana_${i}`)?.value || "";
+
+        ambiente.lado_comando =
+            document.getElementById(`lado_comando_${i}`)?.value || "";
+
+        ambiente.bando =
+            document.getElementById(`bando_${i}`)?.value || "";
+
+        ambiente.nivelador =
+            document.getElementById(`nivelador_${i}`)?.value || "";
+        }
+    });
+
+    window.idEditando = id;
+}
+function copiarMensagem(id) {
+
+    const inst = instalacoes.find(i => i.id === id);
+
+    let mensagem = `
+👤 Cliente: ${inst.nome}
+📍 Endereço: ${inst.endereco}
+🔢 Pedido: ${inst.numero || "Nenhum"}
+📅 Data: ${inst.data}
+💰 Valor: ${formatarMoedaBRL(inst.valor)}
+🏠 Quantidade de ambientes: ${inst.ambientes}
+
+📝 Observações:
+${inst.observacoes || "Nenhuma"}
+
+━━━━━━━━━━━━━━━━━━
+DETALHES DOS AMBIENTES
+━━━━━━━━━━━━━━━━━━
+`;
+
+    inst.ambientesDetalhados.forEach((ambiente, index) => {
+
+        mensagem += `
+🏠 Ambiente ${index + 1}
+
+Nome: ${ambiente.nome}
+Tipo: ${ambiente.tipo}
+Automatizada: ${ambiente.automatizada}
+Largura: ${ambiente.largura} m
+Altura: ${ambiente.altura} m
+`;
+
+        if (ambiente.tipo === "Persiana") {
+
+            mensagem += `
+Tipo Persiana: ${ambiente.tipo_persiana}
+Lado do Comando: ${ambiente.lado_comando}
+Bandô: ${ambiente.bando}
+Nivelador: ${ambiente.nivelador}
+`;
+
+        }
+
+        mensagem += "\n";
+    });
+
+    navigator.clipboard.writeText(mensagem)
+        .then(() => {
+            alert("Mensagem copiada!");
+        });
+}
+    </script>
+</body>
+</html>
