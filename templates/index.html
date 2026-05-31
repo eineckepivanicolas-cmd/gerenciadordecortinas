@@ -505,8 +505,8 @@ function salvar() {
     const metodo = window.idEditando ? "PUT" : "POST";
 
     const url = window.idEditando
-    ? `https://5sndnf47-5000.brs.devtunnels.ms//${window.idEditando}`
-    : "https://5sndnf47-5000.brs.devtunnels.ms/";
+    ? `https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0//${window.idEditando}`
+    : "https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0";
 
    fetch(url, {
     method: metodo,
@@ -631,7 +631,7 @@ function excluirInstalacao(id) {
     }
 
     fetch(
-        `https://5sndnf47-5000.brs.devtunnels.ms/${id}`,
+        `https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0/${id}`,
         {
             method: "DELETE"
         }
@@ -847,7 +847,7 @@ function mostrarOpcoesPersiana(i) {
 }
 function carregarInstalacoes() {
 
-    fetch("https://5sndnf47-5000.brs.devtunnels.ms/")
+    fetch("https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0/")
         .then(res => res.json())
         .then(dados => {
 
