@@ -501,24 +501,24 @@ function salvar() {
         
     ambientesDetalhados.push(ambiente);
     dados.ambientesDetalhados = ambientesDetalhados;
-
+    }
     const metodo = window.idEditando ? "PUT" : "POST";
 
     const url = window.idEditando
     ? `/instalacoes/${window.idEditando}`
     : "/instalacoes";
 
-)
-fetch(url, {
- method: metodo,
- headers: {
-     "Content-Type": "application/json"
- }
- },
- body: JSON.stringify(dados)
 
+fetch(url, {
+    method: metodo,
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+})
 .then(res => res.json())
 .then(() => {
+
     window.idEditando = null;
 
     limparCampos();
@@ -531,7 +531,13 @@ fetch(url, {
 
     carregarInstalacoes();
 
-})}};
+})
+.catch(error => {
+    console.error(error);
+});
+
+} // FECHA A FUNÇÃO salvar()
+
 function criarCard(inst) {
 
    const ambientesHTML = inst.ambientesDetalhados
