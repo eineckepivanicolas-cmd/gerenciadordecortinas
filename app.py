@@ -191,8 +191,7 @@ def criar_instalacao():
     })
 @app.route("/")
 def home():
-    return "OK funcionando"
-
+   return render_template("index.html")
 @app.route("/instalacoes/<int:id>", methods=["DELETE"])
 def excluir_instalacao(id):
 
