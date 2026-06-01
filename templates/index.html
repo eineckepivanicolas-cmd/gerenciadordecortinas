@@ -495,17 +495,17 @@ function salvar() {
 
         ambiente.nivelador =
             document.getElementById(`niveladorPersiana_${i}`)?.value || "";
+            
+            ambientesDetalhados.push(ambiente);
 
         }
-    ambientesDetalhados.push(ambiente);
 
     dados.ambientesDetalhados = ambientesDetalhados;
 
-    dados.id = Date.now();
     const metodo = window.idEditando ? "PUT" : "POST";
 
     const url = window.idEditando
-    ? `/instalacoes${window.idEditando}`
+    ? `/instalacoes/${window.idEditando}`
     : "/instalacoes";
 
    fetch(url, {
