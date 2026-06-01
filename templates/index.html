@@ -505,8 +505,8 @@ function salvar() {
     const metodo = window.idEditando ? "PUT" : "POST";
 
     const url = window.idEditando
-    ? `https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0//${window.idEditando}`
-    : "https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0";
+    ? `/instalacoes${window.idEditando}`
+    : "/instalacoes";
 
    fetch(url, {
     method: metodo,
@@ -631,7 +631,7 @@ function excluirInstalacao(id) {
     }
 
     fetch(
-        `https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0/${id}`,
+        `/instalacoes/${id}`,
         {
             method: "DELETE"
         }
@@ -847,7 +847,7 @@ function mostrarOpcoesPersiana(i) {
 }
 function carregarInstalacoes() {
 
-    fetch("https://dashboard.render.com/web/srv-d8ebvn6k1jcs739r01u0/")
+    fetch("/instalacoes/")
         .then(res => res.json())
         .then(dados => {
 
