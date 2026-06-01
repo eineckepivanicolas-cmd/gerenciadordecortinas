@@ -508,13 +508,14 @@ function salvar() {
     ? `/instalacoes/${window.idEditando}`
     : "/instalacoes";
 
-   fetch(url, {
-    method: metodo,
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(dados)
-})
+)
+fetch(url, {
+ method: metodo,
+ headers: {
+     "Content-Type": "application/json"
+ }
+ },
+ body: JSON.stringify(dados)
 
 .then(res => res.json())
 .then(() => {
