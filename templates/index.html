@@ -496,10 +496,10 @@ function salvar() {
         ambiente.nivelador =
             document.getElementById(`niveladorPersiana_${i}`)?.value || "";
             
-            ambientesDetalhados.push(ambiente);
-
+            
         }
-
+        
+    ambientesDetalhados.push(ambiente);
     dados.ambientesDetalhados = ambientesDetalhados;
 
     const metodo = window.idEditando ? "PUT" : "POST";
@@ -847,7 +847,7 @@ function mostrarOpcoesPersiana(i) {
 }
 function carregarInstalacoes() {
 
-    fetch("/instalacoes/")
+    fetch("/instalacoes")
         .then(res => res.json())
         .then(dados => {
 
